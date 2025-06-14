@@ -1,3 +1,4 @@
+// 25. Write a program to delete a number from a given location in an array. 
 #include <stdio.h>
 
 int main() {
@@ -19,7 +20,7 @@ int main() {
     scanf("%d", &loc);
 
     //logic for deleting element 
-    for(int i=loc; i<in; i++) {
+    for(int i=loc; i<(in-1); i++) {
         ary[i] = ary[i+1];
     }
 

@@ -1,5 +1,6 @@
+// 26. Write a program to insert a number in an array that is already sorted in an 
+// ascending order.
 #include<stdio.h>
-
 
 int intInsert(int );
 int main() {
@@ -9,14 +10,14 @@ int main() {
     printf("How many number you want to enter :");
     scanf("%d", &in);
 
-    printf("--- ---- ---0Note: Enter Numbers in Ascending Order --- --- ---\n");
+    printf("--- ---- --- Note: Enter Numbers in Ascending Order --- --- ---\n");
     printf("--- Enter the element for Array ---> \n");
     for(int i=0; i<in; i++) {
         printf("Enter the %d number :", (i+1));
         scanf("%d", &ary[i]);
     }
 
-    //intpur nnumber which one insert in array
+    //input number which one insert in array
     int n;
     printf("Enter the number which one you want to insert in array :");
     scanf("%d", &n);

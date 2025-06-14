@@ -20,7 +20,7 @@ int main() {
             if(ary[i] == ary[j]) {
                 for(int k=j; k<in; k++) {
                     ary[k] = ary[k+1];
-                 }
+                }
                 j--;
                 in--;
             }

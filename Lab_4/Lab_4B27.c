@@ -1,7 +1,7 @@
+// 27. Write a program to delete a number from an array that is already sorted in an 
+// ascending order.
 #include<stdio.h>
 
-
-int intInsert(int );
 int main() {
     int ary[50];
     // initialation of array
@@ -9,7 +9,7 @@ int main() {
     printf("How many number you want to enter :");
     scanf("%d", &in);
 
-    printf("--- ---- ---Note: Enter Numbers in Ascending Order --- --- ---\n");
+    printf("--- ---- --- Note: Enter Numbers in Ascending Order --- --- ---\n");
     printf("--- Enter the element for Array ---> \n");
     for(int i=0; i<in; i++) {
         printf("Enter the %d number :", (i+1));
