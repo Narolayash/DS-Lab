@@ -15,7 +15,6 @@ int main() {
     //create memory for string 
     char *str = (char *) malloc( (sizeOfStr+1) * sizeof(char) );
 
-
     //if memory is not allocted 
     if(str == NULL) {
         printf("Memory allocation failed!\n ");

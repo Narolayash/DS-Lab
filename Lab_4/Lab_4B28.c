@@ -31,4 +31,6 @@ int main() {
     for(int i=0; i<in; i++) {
         printf("%d ", ary[i]);
     }
+
+    return 0;
 }

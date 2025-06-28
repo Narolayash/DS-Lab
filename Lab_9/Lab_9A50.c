@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 void input_array( int * , int );
 void print_array( int * , int );
 
@@ -12,8 +11,9 @@ int main() {
     int sizeOfAry;
     printf("Enter the size of array : ");
 
-    // Allocate memory... 
-    int *iptr = (int *) malloc( scanf("%d", &sizeOfAry) * sizeof(int ) );
+    // Allocate memory...
+    scanf("%d", &sizeOfAry); 
+    int *iptr = (int *) malloc( sizeOfAry * sizeof(int ) );
 
     // check memory allocation was done or not
     if(iptr == NULL) {

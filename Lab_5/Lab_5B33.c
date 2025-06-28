@@ -71,4 +71,5 @@ void anagarm(char str1[20], char str2[20]) {
         printf("Strings are not equal\n");
     }
 
+    return 0;
 }
