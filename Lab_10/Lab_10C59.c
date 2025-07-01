@@ -53,10 +53,10 @@ void removeDuplicate() {
 
     while (save->link != NULL && save != NULL ) {
         if(save->info == save->link->info) {
-                temp = save->link;
-                save->link = temp->link;
-                free(temp);
-            }
+            temp = save->link;
+            save->link = temp->link;
+            free(temp);
+        }
         else {
             save = save->link;
         }
