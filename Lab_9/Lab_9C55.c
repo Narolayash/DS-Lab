@@ -20,11 +20,12 @@ int main() {
     strcpy(ptr->branch, "B. Tech CSE");
     ptr->batch_no = 7;
 
-    printf("Student Details : /n");
+    printf("Student Details : \n");
     printf("%d \n", ptr->roll_no);
     printf("%s \n", ptr->name);
     printf("%s \n", ptr->branch);
     printf("%d \n", ptr->batch_no);
 
+    free(ptr);
     return 0;
 }

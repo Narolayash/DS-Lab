@@ -19,11 +19,13 @@ void copyLinkList() {
     }
 
     struct node *save1 = first1;
-    struct node *save2;
+    struct node *save2 = NULL;
 
     while (save1 != NULL) {
         struct node *newNode = (struct node *) malloc (sizeof(struct node));
-
+        if(newNode == NULL) {
+            printf()
+        }
         newNode->info = save1->info;
         newNode->link = NULL;
         if(first2 == NULL) {

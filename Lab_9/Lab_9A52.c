@@ -10,7 +10,11 @@ int main() {
     scanf("%d", &sizeOfAry);
 
     // initialition of poiter array
-    int* iptr = (int* ) malloc( sizeOfAry * sizeof(int ) );
+    int* iptr = (int* ) malloc( sizeOfAry * sizeof(int));
+    if (iptr == 0) {
+        printf("Memory allocation failed\n");
+        return 1;
+    } 
 
     // input array values
     for(int i=0; i<sizeOfAry; i++) {

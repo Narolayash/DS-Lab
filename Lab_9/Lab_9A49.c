@@ -10,16 +10,17 @@ int main() {
     int *iptr = (int *) malloc( n * sizeof(int));
     char *cptr = (char *) malloc( n * sizeof(char));
     float *fptr = (float *) malloc( n * sizeof(float));
+    
+    
+    if(iptr && cptr && fptr) {
+        *iptr = 5;
+        *cptr = 'a';
+        *fptr = 10.5;
 
-    *iptr = 5;
-    *cptr = 'a';
-    *fptr = 10.5;
-
-    if(*iptr && *cptr && *fptr) {
-        printf("%d", *iptr);
-        printf("%c", *cptr);
-        printf("%f", *fptr);
-
+        printf("Integer: %d\n", *iptr);
+        printf("Character: %c\n", *cptr);
+        printf("Float: %.2f\n", *fptr);
+        
         free(iptr);
         free(cptr);
         free(fptr);
