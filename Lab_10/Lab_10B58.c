@@ -11,7 +11,7 @@ struct node {
 struct node *first1 = NULL;
 struct node *first2 = NULL;
 
-void compairTwoLinklist() {
+void compareTwoLinklist() {
     if(first1 == NULL && first2 == NULL) {
         printf("Both linklist is null, so they are same \n");
         return;
@@ -25,47 +25,41 @@ void compairTwoLinklist() {
         return;
     }
 
+    struct node *temp1 = first1, *temp2 = first2;
     int flag = 1;
-    while (first1 != NULL && first2 != NULL){
-        if(first1->info != first2->info){
+    while (temp1 != NULL && temp2 != NULL){
+        if(temp1->info != temp2->info){
             flag = 0;
             break;
         }
-        first1 = first1->link;
-        first2 = first2->link;
+        temp1 = temp1->link;
+        temp2 = temp2->link;
     }
 
-    if(first1 != NULL || first2 != NULL) {
+    if(temp1 != NULL || temp2 != NULL) {
         flag = 0;
     }
 
     if(flag) {
-        printf("LinkLIst are same \n");
+        printf("Linked List are the same \n");
     }
     else {
-        printf("LinkList are not same \n");
+        printf("Linked list are not the same \n");
     }
 } 
 
-void displayAllNodesForFirst() {
-    struct node *save ;
-
-    save = first1;
-    while (save != NULL) {
-        printf("%d\n", save->info);
-        save = save->link;
-    }
-}
-
-void displayAllNodesForSecond() {
-    struct node *save ;
-
-    save = first2;
-    while (save != NULL) {
-        printf("%d\n", save->info);
-        save = save->link;
+void displayAllNodes(struct node *first) {
+    if(first == NULL ){
+        printf("Linked list is null");
+        return;
     }
 
+    struct node *save = first;
+    while (save != NULL) {
+        printf("%d -> ", save->info);
+        save = save->link;
+    }
+    printf("NULL \n");
 }
 
 void insertAtLastInFirst() {
@@ -130,11 +124,12 @@ int main () {
                 break;
             case 2: insertAtLastInSecond();
                 break;
-            case 3: displayAllNodesForFirst();
+            case 3: displayAllNodes(first1); 
+                    displayAllNodes(first2);
                 break;
-            case 4: displayAllNodesForSecond();
+            case 4: compareTwoLinklist();
                 break;
-            case 5: compairTwoLinklist();
+            case 0: printf("Exiting...\n");
                 break;
             default: printf("Invalid input ");
                 break;

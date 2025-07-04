@@ -33,12 +33,16 @@ void insertAtLast (int x) {
 }
 
 void displayElements () {
-    struct node *save;
-    save = first;
+    if(first == NULL) {
+        printf("List is Empty \n");
+        return;
+    }
+    struct node *save = first;
     while (save != NULL) {
-        printf("%d ", save -> info);
+        printf("%d -> ", save -> info);
         save = save -> link;
     }
+    printf("NULL\n");
 }
 
 void removeDuplicate() {
