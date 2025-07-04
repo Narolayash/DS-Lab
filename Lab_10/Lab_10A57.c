@@ -76,9 +76,9 @@ void insertAtLast() {
     
     printf("Enter the value of element which insert at last of the linked list :");
     scanf("%d", &newNode->info);
+    newNode->link = NULL;
     
     if(first == NULL) {
-        newNode->link = NULL;
         first = newNode;
         return;
     }
@@ -89,7 +89,7 @@ void insertAtLast() {
         save = save->link;
     }
     save->link = newNode;
-    newNode->link = NULL;
+    
 
     printf("Node inserted at the end successfully.\n");
 }
@@ -97,7 +97,7 @@ void insertAtLast() {
 // Delete a last node of the linked list (5)
 void deleteAtlast() {
     if(first == NULL) {
-        printf("The Linked List is empty /n");
+        printf("The Linked List is empty \n");
         return;
     }
 
@@ -120,6 +120,45 @@ void deleteAtlast() {
 }
 
 // Delete a node from specified position (6)
+void deleteAtSpecifiedPosition() {
+    if(first == NULL) {
+        printf("List is empty \n");
+        return;
+    }
+
+    int posi = 0;
+    printf("Let node numbering start with position 1, Enter the position of node you want to delete :");
+    scanf("%d", &posi);
+
+    if (posi <= 0) {
+        printf("Invalid position. Must be >= 1.\n");
+        return;
+    }
+
+    struct node *save = first;
+    if(posi == 1) {
+        first = first->link;
+        free(save);
+        printf("Node at position 1 deleted.\n");
+        return;
+    }
+
+    struct node *pre = NULL;
+    for(int i=1; (i<posi && save != NULL); i++) {
+        pre = save;
+        save = save->link;
+    }
+
+    if (save == NULL) {
+        printf("Position out of range.\n");
+        return;
+    }
+
+    pre->link = save->link;
+    printf("Node at position %d deleted.\n", posi);
+    free(save);
+}
+
 
 // count the number of nodes (7)
 void countAllNodes() {
@@ -129,14 +168,13 @@ void countAllNodes() {
     }
 
     int count = 0;
-    struct node *save;
-    save = first;
+    struct node *save = first;
     while (save != NULL) {
         count++;
         save = save->link;
     }
 
-    printf("Total number of node : %d", count);
+    printf("Total number of node : %d\n", count);
 }
 
 int main() {
@@ -145,10 +183,10 @@ int main() {
         printf("\nNumber 1 : Insert a node at the front of the linked list \n");
         printf("Number 2 : Display all nodes \n");
         printf("Number 3 : Delete a first node of the linked list \n");
-        printf("Numbwer 4 : Insert a node at the end of the linked list \n");
-        printf("Numbwer 5 : Delete a last node of the linked list \n");
-        printf("Numbwer 6 : Delete a node from specified position \n");
-        printf("Numbwer 7 : count the number of nodes \n");
+        printf("Number 4 : Insert a node at the end of the linked list \n");
+        printf("Number 5 : Delete a last node of the linked list \n");
+        printf("Number 6 : Delete a node from specified position \n");
+        printf("Number 7 : count the number of nodes \n");
 
         printf("Enter the Number : ");
         scanf("%d", &number);
@@ -170,7 +208,7 @@ int main() {
         case 5: deleteAtlast();
             break;
 
-        case 6: insertAtLast();
+        case 6: deleteAtSpecifiedPosition();
             break;
 
         case 7: countAllNodes();

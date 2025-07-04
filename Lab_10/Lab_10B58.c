@@ -25,18 +25,18 @@ void compairTwoLinklist() {
         return;
     }
 
-    struct node *save1 = first1;
-    struct node *save2 = first2;
-
-
     int flag = 1;
-    while (save1 != NULL && save2 != NULL){
-        if(save1->info != save2->info){
+    while (first1 != NULL && first2 != NULL){
+        if(first1->info != first2->info){
             flag = 0;
             break;
         }
-        save1 = save1->link;
-        save2 = save2->link;
+        first1 = first1->link;
+        first2 = first2->link;
+    }
+
+    if(first1 != NULL || first2 != NULL) {
+        flag = 0;
     }
 
     if(flag) {

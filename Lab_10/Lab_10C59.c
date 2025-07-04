@@ -47,11 +47,9 @@ void removeDuplicate() {
         return;
     }
 
-    struct node *save;
-    struct node *temp;
-    save = first;
+    struct node *save = first, *temp;
 
-    while (save->link != NULL && save != NULL ) {
+    while (save != NULL  && save->link != NULL) {
         if(save->info == save->link->info) {
             temp = save->link;
             save->link = temp->link;

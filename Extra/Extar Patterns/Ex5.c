@@ -4,12 +4,10 @@ int main() {
     printf("Enter the number :");
     scanf("%d", &n);
     for (int i = 0; i<n ; i++) {
-        for(int k = 0; k<(n-i-1) ; k++) {
-            printf(" ");
-        }
         for(int j = 0; j<=i ; j++) {
-            printf("%d", (j+1));
+            printf("%d ", (i+1));
         }
         printf("\n");
     }
+    return 0;
 }

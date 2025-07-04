@@ -12,13 +12,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h> 
 
 void anagarm(char str1[20], char str2[20]);
 
 int main() {
     // create char array
     int n;
-    printf("How many number you want to enter : ");
+    printf("How many words you want to enter : ");
     scanf("%d", &n);
     char words[n][20];
 
@@ -28,6 +29,7 @@ int main() {
         scanf("%s", words[i]);
     }
 
+    srand(time(NULL));
     // generated random number
     int randomNum = rand() % n;
 
@@ -70,6 +72,4 @@ void anagarm(char str1[20], char str2[20]) {
     } else {
         printf("Strings are not equal\n");
     }
-
-    return 0;
 }

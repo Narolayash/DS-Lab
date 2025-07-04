@@ -15,7 +15,7 @@ int main() {
     *cptr = 'a';
     *fptr = 10.5;
 
-    if(*iptr && *cptr) {
+    if(*iptr && *cptr && *fptr) {
         printf("%d", *iptr);
         printf("%c", *cptr);
         printf("%f", *fptr);
