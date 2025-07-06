@@ -15,7 +15,7 @@ struct node *sortEleOfLinkedList(struct node *first) {
         return NULL;
     }
 
-    for(struct node *i = first; i != NULL; i = i->link){
+    for(struct node *i = first; i->link != NULL; i = i->link){
         for(struct node *j = i->link; j != NULL; j = j->link) {
             if(i->info > j->info) {
                 int temp = i->info;

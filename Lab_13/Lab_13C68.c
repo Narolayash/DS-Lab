@@ -11,26 +11,28 @@ struct node {
     struct node *link;
 };
 
-struct node *first = NULL;
-
-void swapTwoConsecutiveNode() {
-    if(first == NULL) {
-        printf("First is null");
-        return;
+struct node* swapTwoConsecutiveNode(struct node *first) {
+    if(first == NULL || first->link == NULL) {
+        printf("Not enough elements are available\n");
+        return first;
     }
 
-    struct node *pre, *save, *temp = NULL;
-    pre = first;
-    save = first->link;
+    struct node *save1 = first, *save2 = NULL,*next = NULL, *pre = NULL;
+    first = save1->link;
+    while (save1 != NULL && save1->link != NULL) {
+        save2 = save1->link;
+        next = save2->link;
 
-    while (save != NULL) {
-        if(pre == first) {
-            temp = pre;
-            pre->link = save;
-            save->link = temp;
+        save1->link = next;
+        save2->link = save1;
+        
+        if(pre != NULL) {
+            pre->link = save2;
         }
-        else {
-            
-        }
+
+        pre = save1;
+        save1 = next;
     }
+
+    return first;
 }
