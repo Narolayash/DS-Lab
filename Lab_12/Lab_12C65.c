@@ -9,32 +9,43 @@ struct node {
     struct node *link;
 };
 
-struct node *first = NULL;
-
-void kthSwapBothSideOfListedList(struct node *fisrt) {
-    if(fisrt == NULL) {
+void kthSwapBothSideOfLinkedList(struct node *first) {
+    if(first == NULL) {
         printf("List is Empty \n");
-        return first;
+        return;
     }
     
     int k, count = 0;
-    printf("Enter k : for swap kth elemente from beginning with kth node from end : ");
+    printf("Enter k : for swap kth element from beginning with kth node from end : ");
     scanf("%d", &k);
     
-    struct node *save = fisrt; 
+    struct node *save = first; 
     while (save != NULL) {
         count ++;
         save = save->link;
     }
 
-    struct node *save = first, *pre = NULL, *tempSave = NULL, *tempPre = NULL;
+    if (k <= 0 || k > count) {
+        printf("Invalid k. Must be between 1 and %d.\n", count);
+        return;
+    }
 
-    for(int i=1; i<count-(k-1); i++) {
+    save = first;
+    struct node* temp1 = NULL;
+    struct node* temp2 = NULL;
+    for(int i=1; i<=count ; i++) {
         if(i == k) {
-            tempSave = save;
-            tempPre = save;
+            temp1 = save;
         }
-        pre = save;
+        if(i == (count-k+1)) {
+            temp2 = save;
+        }
         save = save->link;
     }
+
+    int temp = temp1->info;
+    temp1->info = temp2->info;
+    temp2->info = temp;
+
+    printf("Nodes swapped: position %d from start and end.\n", k);
 } 
