@@ -12,7 +12,7 @@ struct node {
 struct node *first = NULL;
 
 void kthSwapBothSideOfListedList(struct node *fisrt) {
-    if(first == NULL) {
+    if(fisrt == NULL) {
         printf("List is Empty \n");
         return first;
     }

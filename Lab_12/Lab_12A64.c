@@ -27,7 +27,3 @@ struct node* reverseLinkedList(struct node *first) {
 
     return first;
 }
-
-int main() {
-
-}

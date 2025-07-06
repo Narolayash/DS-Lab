@@ -24,7 +24,8 @@ void copyLinkList() {
     while (save1 != NULL) {
         struct node *newNode = (struct node *) malloc (sizeof(struct node));
         if(newNode == NULL) {
-            printf()
+            printf("memory allocation failed \n");
+            return;
         }
         newNode->info = save1->info;
         newNode->link = NULL;
@@ -57,14 +58,14 @@ struct node* insertAtLast(struct node* temp) {
     struct node *newNode = (struct node*) malloc(sizeof(struct node));
     if(newNode == NULL) {
         printf("memory allocation failed ");
-        return first1;
+        return temp;
     }
     
     printf("Enter the value of element which insert at last of the linked list :");
     scanf("%d", &newNode->info);
+    newNode->link = NULL;
     
     if(temp == NULL) {
-        newNode->link = NULL;
         temp = newNode;
         return temp;
     }
@@ -75,7 +76,6 @@ struct node* insertAtLast(struct node* temp) {
         save = save->link;
     }
     save->link = newNode;
-    newNode->link = NULL;
 
     printf("Node inserted at the end successfully.\n");
     return temp;
@@ -89,7 +89,7 @@ int main() {
         printf("Enter 3: CopyList \n");
         printf("Enter 4: display copy linklist \n");
         printf("Enter 0: Exit \n");
-        printf("Enter hte value : ");
+        printf("Enter your choice: ");
         scanf("%d", &n);
 
 
