@@ -8,11 +8,19 @@ struct node {
     struct node *link;
 };
 
-int push (struct node **top, int x) {
-    struct node *newNode = (struct node *) malloc (sizeof(struct node));
-    if (newNode == NULL) return 0;
+struct node* createNode(int x) {
+    struct node *newNode = (struct node*) malloc (sizeof(struct node));
+    if(!newNode) return NULL;
 
     newNode->info = x;
+    newNode->link = NULL;
+
+    return newNode;
+}
+
+int push (int x, struct node **top) {
+    struct node *newNode = createNode(x);
+
     newNode->link = *top;
     *top = newNode;
 
@@ -52,23 +60,56 @@ void display (struct node *top) {
     printf("NULL \n ");
 }
 
-int main () {
+int main() {
     struct node *top = NULL;
+    int choice, value;
 
-    // push 
-    push(&top, 10);
-    push(&top, 20);
-    display(top);
+    do {
+        printf("\nMenu:\n");
+        printf("1. Push\n");
+        printf("2. Pop\n");
+        printf("3. Peek\n");
+        printf("4. Display Stack\n");
+        printf("0. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
 
-    // pop
-    int info = pop(&top);
-    printf("%d \n", info);
+        switch(choice) {
+            case 1:
+                printf("Enter value to push: ");
+                scanf("%d", &value);
+                push(value, &top);
+                printf("%d pushed onto the stack.\n", value);
+                break;
 
-    //peek
-    printf("%d \n", peek(top));
+            case 2:
+                value = pop(&top);
+                if(value == -1)
+                    printf("Stack Underflow: Nothing to pop.\n");
+                else
+                    printf("Popped value: %d\n", value);
+                break;
 
-    //display
-    display(top);
+            case 3:
+                value = peek(top);
+                if(value == -1)
+                    printf("Stack is empty.\n");
+                else
+                    printf("Top value: %d\n", value);
+                break;
+
+            case 4:
+                display(top);
+                break;
+
+            case 0:
+                printf("Exiting...\n");
+                break;
+
+            default:
+                printf("Invalid choice. Try again.\n");
+        }
+    } while(choice != 0);
 
     return 0;
 }

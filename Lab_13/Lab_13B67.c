@@ -10,29 +10,56 @@ struct node {
     struct node *link;
 };
 
-int gcd (int a, int b) {
-    int sm, lg;
-    if( a < b ) {
-        sm = a;
-        lg = b;
+int gcd(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
     }
-    else {
-        sm = b;
-        lg = a;
+    return a;
+}
+
+struct node* createNode(int x) {
+    struct node *newNode = (struct node*) malloc (sizeof(struct node));
+    if(!newNode) return NULL;
+
+    newNode->info = x;
+    newNode->link = NULL;
+
+    return newNode;
+}
+
+void insertAtLast(int x, struct node **first) {
+    struct node *newNode = createNode(x);
+
+    if(*first == NULL) {
+        *first = newNode;
+        return;
+    }
+    
+    struct node *save;
+    save = *first;
+    while (save->link != NULL) {
+        save = save->link;
+    }
+    save->link = newNode;
+
+    printf("Node inserted at the end successfully.\n");
+}
+
+void display(struct node *first) {
+    if(first == NULL) {
+        printf("The Linked List is empty \n");
+        return;
     }
 
-    while (1) {
-        int rem = lg % sm;
-        if(rem != 0) {
-            lg = sm;
-            sm = rem;
-        }
-        else {
-            break;
-        }
+    struct node *save;
+    save = first;
+    while (save != NULL) {
+        printf("%d -> ", save->info);
+        save = save->link;
     }
-
-    return sm;
+    printf("NULL \n");
 }
 
 struct node *addGCD (struct node *first) {
@@ -45,6 +72,7 @@ struct node *addGCD (struct node *first) {
     while (save->link != NULL) {
         next = save->link;
         struct node *newNode = (struct node*) malloc (sizeof(struct node));
+        if(!newNode) return NULL;
         newNode->info = gcd(save->info, next->info);
         newNode->link = save->link;
         save->link = newNode;
@@ -54,48 +82,22 @@ struct node *addGCD (struct node *first) {
     return first;
 } 
 
-void printList(struct node *first) {
-    while (first != NULL) {
-        printf("%d -> ", first->info);
-        first = first->link;
-    }
-    printf("NULL\n");
-}
-
-struct node* insertAtLast(struct node* first, int x) {
-    struct node* newNode = (struct node*)malloc(sizeof(struct node));
-    newNode->info = x;
-    newNode->link = NULL;
-
-    if (first == NULL) {
-        return newNode;
-    }
-
-    struct node* temp = first;
-    while (temp->link != NULL) {
-        temp = temp->link;
-    }
-
-    temp->link = newNode;
-    return first;
-}
 
 int main() {
-    struct node* first = NULL;
+    struct node *head = NULL;
 
-    // Create initial list: 12 → 15 → 21
-    first = insertAtLast(first, 12);
-    first = insertAtLast(first, 15);
-    first = insertAtLast(first, 21);
+    insertAtLast(18, &head);
+    insertAtLast(24, &head);
+    insertAtLast(36, &head);
+    insertAtLast(60, &head);
 
     printf("Original List:\n");
-    printList(first);
+    display(head);
 
-    first = addGCD(first);
+    head = addGCD(head);
 
-    printf("List After GCD Insertions:\n");
-    printList(first);
+    printf("List After GCD Insertion:\n");
+    display(head);
 
     return 0;
-
 }

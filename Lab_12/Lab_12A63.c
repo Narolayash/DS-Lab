@@ -8,29 +8,48 @@ struct node {
     struct node *link;
 };
 
-struct node *first1 = NULL;
-struct node *first2 = NULL;
+struct node* createNode(int x) {
+    struct node *newNode = (struct node*) malloc (sizeof(struct node));
+    if(!newNode) return NULL;
 
-void copyLinkList() {
+    newNode->info = x;
+    newNode->link = NULL;
 
-    if(first1 == NULL) {
-        printf("Linklist is empty");
+    return newNode;
+}
+
+void insertAtLast(int x, struct node **first) {
+    struct node *newNode = createNode(x);
+
+    if(*first == NULL) {
+        *first = newNode;
+        return;
+    }
+    
+    struct node *save;
+    save = *first;
+    while (save->link != NULL) {
+        save = save->link;
+    }
+    save->link = newNode;
+
+    printf("Node inserted at the end successfully.\n");
+}
+
+void copyLinkList(struct node *first, struct node **newFirst) {
+
+    if(first == NULL) {
+        printf("Linked list is empty.\n");
         return;
     }
 
-    struct node *save1 = first1;
+    struct node *save1 = first;
     struct node *save2 = NULL;
 
     while (save1 != NULL) {
-        struct node *newNode = (struct node *) malloc (sizeof(struct node));
-        if(newNode == NULL) {
-            printf("memory allocation failed \n");
-            return;
-        }
-        newNode->info = save1->info;
-        newNode->link = NULL;
-        if(first2 == NULL) {
-            first2 = newNode;
+        struct node *newNode = createNode(save1->info);
+        if(*newFirst == NULL) {
+            *newFirst = newNode;
             save2 = newNode;
         }
         else {
@@ -41,72 +60,66 @@ void copyLinkList() {
     }
 }
 
-void displayLinkList(struct node* temp) {
-    if(temp == NULL) {
-        printf("LinkList is Empty \n");
-        return ;
+void displayAllNodes(struct node *first) {
+    if(first == NULL) {
+        printf("The Linked List is empty \n");
+        return;
     }
 
-    while (temp != NULL) {
-        printf("%d -> ", temp->info);
-        temp = temp->link;
-    }
-    printf("Null \n");
-}
-
-struct node* insertAtLast(struct node* temp) {
-    struct node *newNode = (struct node*) malloc(sizeof(struct node));
-    if(newNode == NULL) {
-        printf("memory allocation failed ");
-        return temp;
-    }
-    
-    printf("Enter the value of element which insert at last of the linked list :");
-    scanf("%d", &newNode->info);
-    newNode->link = NULL;
-    
-    if(temp == NULL) {
-        temp = newNode;
-        return temp;
-    }
-    
     struct node *save;
-    save = temp;
-    while (save->link != NULL) {
+    save = first;
+    while (save != NULL) {
+        printf("%d -> ", save->info);
         save = save->link;
     }
-    save->link = newNode;
-
-    printf("Node inserted at the end successfully.\n");
-    return temp;
+    printf("NULL \n");
 }
 
 int main() {
-    int n;
-    do{ 
-        printf("Enter 1: insert value \n");
-        printf("Enter 2: display linklist \n");
-        printf("Enter 3: CopyList \n");
-        printf("Enter 4: display copy linklist \n");
-        printf("Enter 0: Exit \n");
+    struct node *original = NULL;
+    struct node *copy = NULL;
+    int choice, value;
+
+    do {
+        printf("\nMenu:\n");
+        printf("1. Insert into original list\n");
+        printf("2. Display original list\n");
+        printf("3. Copy original list\n");
+        printf("4. Display copied list\n");
+        printf("0. Exit\n");
         printf("Enter your choice: ");
-        scanf("%d", &n);
+        scanf("%d", &choice);
 
+        switch(choice) {
+            case 1:
+                printf("Enter value to insert: ");
+                scanf("%d", &value);
+                insertAtLast(value, &original);
+                break;
 
-        switch(n) {
-            case 1: first1 = insertAtLast(first1);
+            case 2:
+                printf("Original Linked List:\n");
+                displayAllNodes(original);
                 break;
-            case 2: displayLinkList(first1);
+
+            case 3:
+                copyLinkList(original, &copy);
+                printf("Copied Linked List successfully.\n");
                 break;
-            case 3: copyLinkList();
+
+            case 4:
+                printf("Copied Linked List:\n");
+                displayAllNodes(copy);
                 break;
-            case 4: displayLinkList(first2);
+
+            case 0:
+                printf("Exiting...\n");
                 break;
-            case 0: printf("Exit --- ");
-                break;
-            default: printf("Invalid Input\n");
+
+            default:
+                printf("Invalid choice, please try again.\n");
         }
-    }while (n != 0);
+    } while(choice != 0);
 
     return 0;
 }

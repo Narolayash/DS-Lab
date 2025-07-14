@@ -1,34 +1,51 @@
 // 58. WAP to check whether 2 singly linked lists are same or not.
 
-#include<stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 
-struct node {
+// define Node --- >
+struct node
+{
     int info;
     struct node *link;
 };
 
-struct node *first1 = NULL;
-struct node *first2 = NULL;
+// create a new node function
+struct node *createNode(int x)
+{
+    struct node *newNode = (struct node *)malloc(sizeof(struct node));
+    if (!newNode)
+        return NULL;
 
-void compareTwoLinklist() {
-    if(first1 == NULL && first2 == NULL) {
+    newNode->info = x;
+    newNode->link = NULL;
+
+    return newNode;
+}
+void compareTwoLinklist(struct node *first1, struct node *first2)
+{
+    if (first1 == NULL && first2 == NULL)
+    {
         printf("Both linklist is null, so they are same \n");
         return;
     }
-    if(first1 == NULL) {
+    if (first1 == NULL)
+    {
         printf("first linklist is null \n");
         return;
     }
-    if(first2 == NULL) {
+    if (first2 == NULL)
+    {
         printf("second linklist is null \n");
         return;
     }
 
     struct node *temp1 = first1, *temp2 = first2;
     int flag = 1;
-    while (temp1 != NULL && temp2 != NULL){
-        if(temp1->info != temp2->info){
+    while (temp1 != NULL && temp2 != NULL)
+    {
+        if (temp1->info != temp2->info)
+        {
             flag = 0;
             break;
         }
@@ -36,105 +53,115 @@ void compareTwoLinklist() {
         temp2 = temp2->link;
     }
 
-    if(temp1 != NULL || temp2 != NULL) {
+    if (temp1 != NULL || temp2 != NULL)
+    {
         flag = 0;
     }
 
-    if(flag) {
+    if (flag)
+    {
         printf("Linked List are the same \n");
     }
-    else {
+    else
+    {
         printf("Linked list are not the same \n");
     }
-} 
+}
 
-void displayAllNodes(struct node *first) {
-    if(first == NULL ){
-        printf("Linked list is null");
+void displayAllNodes(struct node *first)
+{
+    if (first == NULL)
+    {
+        printf("The Linked List is empty \n");
         return;
     }
 
-    struct node *save = first;
-    while (save != NULL) {
+    struct node *save;
+    save = first;
+    while (save != NULL)
+    {
         printf("%d -> ", save->info);
         save = save->link;
     }
     printf("NULL \n");
 }
 
-void insertAtLastInFirst() {
-    struct node *newNode = (struct node*) malloc(sizeof(struct node));
-    struct node *save ;
+void insertAtLast(int x, struct node **first)
+{
+    struct node *newNode = createNode(x);
 
-    printf("Enter the value of element which insert at last of the linked list :");
-    scanf("%d", &newNode->info);
-
-    if(first1 == NULL) {
-        newNode->link = NULL;
-        first1 = newNode;
+    if (*first == NULL)
+    {
+        *first = newNode;
         return;
     }
 
-    save = first1;
-    while (save->link != NULL) {
+    struct node *save;
+    save = *first;
+    while (save->link != NULL)
+    {
         save = save->link;
     }
-
     save->link = newNode;
-    newNode->link = NULL;
 
+    printf("Node inserted at the end successfully.\n");
 }
 
-void insertAtLastInSecond() {
-    struct node *newNode = (struct node*) malloc(sizeof(struct node));
-    struct node *save ;
+int main()
+{
+    struct node *first1 = NULL;
+    struct node *first2 = NULL;
+    int choice, value;
 
-    printf("Enter the value of element which insert at last of the linked list :");
-    scanf("%d", &newNode->info);
+    do
+    {
+        printf("\nMenu:\n");
+        printf("1. Insert in first linked list\n");
+        printf("2. Insert in second linked list\n");
+        printf("3. Display first linked list\n");
+        printf("4. Display second linked list\n");
+        printf("5. Compare both linked lists\n");
+        printf("6. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
 
-    if(first2 == NULL) {
-        newNode->link = NULL;
-        first2 = newNode;
-        return;
-    }
+        switch (choice)
+        {
+        case 1:
+            printf("Enter value to insert in first list: ");
+            scanf("%d", &value);
+            insertAtLast(value, &first1);
+            break;
 
-    save = first2;
-    while (save->link != NULL) {
-        save = save->link;
-    }
+        case 2:
+            printf("Enter value to insert in second list: ");
+            scanf("%d", &value);
+            insertAtLast(value, &first2);
+            break;
 
-    save->link = newNode;
-    newNode->link = NULL;
+        case 3:
+            printf("First linked list: ");
+            displayAllNodes(first1);
+            break;
 
-}
+        case 4:
+            printf("Second linked list: ");
+            displayAllNodes(first2);
+            break;
 
-int main () {
-        int n;
-    do {
-        printf(" 1: Insert the value at last position of first linklist \n");
-        printf(" 2: Insert the value at last position of second linklist \n");
-        printf(" 3: Display first linklist \n");
-        printf(" 4: Display second linklist \n");
-        printf(" 5: Compair first and second linklist \n");
-        printf(" 0: Exit \n");
-        scanf("%d", &n);
+        case 5:
+            compareTwoLinklist(first1, first2);
+            break;
 
-        switch (n) {
-            case 1: insertAtLastInFirst();
-                break;
-            case 2: insertAtLastInSecond();
-                break;
-            case 3: displayAllNodes(first1); 
-                    displayAllNodes(first2);
-                break;
-            case 4: compareTwoLinklist();
-                break;
-            case 0: printf("Exiting...\n");
-                break;
-            default: printf("Invalid input ");
-                break;
+        case 6:
+            printf("Exiting...\n");
+            break;
+
+        default:
+            printf("Invalid choice! Please try again.\n");
         }
-    }
-    while (n != 0);
+
+    } while (choice != 6);
+
     return 0;
 }

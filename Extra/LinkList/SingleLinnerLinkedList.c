@@ -234,6 +234,9 @@ void deleteAtAddress(struct node *first, struct node *x) {
     printf("Node deleted \n");
 }
 
+// Tasks panding --- >
+// recursive routine to erase a linked list (delete all node from the lined list) 
+
 int main() {
     
     // 1... struct node* insertAtFirstPosition(int x, struct node *first)

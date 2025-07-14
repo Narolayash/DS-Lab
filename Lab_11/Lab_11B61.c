@@ -8,12 +8,18 @@ struct node {
     struct node* link;
 };
 
-int enqueue(struct node** first, struct node** last, int x) {
-    struct node* newNode = (struct node*) malloc (sizeof(struct node));
-    if(!newNode) return -1;
+struct node* createNode(int x) {
+    struct node *newNode = (struct node*) malloc (sizeof(struct node));
+    if(!newNode) return NULL;
 
     newNode->info = x;
     newNode->link = NULL;
+
+    return newNode;
+}
+
+int enqueue(int x, struct node** first, struct node** last) {
+    struct node* newNode = createNode(x);
 
     if(*first == NULL) {
         *first = newNode;
@@ -44,4 +50,65 @@ int dequeue(struct node** first, struct node** last) {
     }
     free(temp);
     return info;
+}
+
+void displayQueue(struct node *first) {
+    if(first == NULL) {
+        printf("Stack is empty \n");
+        return;
+    }
+
+    printf("Stack Element --- \n ");
+    struct node *save = first;
+    while(save != NULL) {
+        printf("%d -> ", save->info);
+        save = save->link;
+    }
+
+    printf("NULL \n ");
+}
+
+int main() {
+    struct node *first = NULL, *last = NULL;
+    int choice, value;
+
+    do {
+        printf("\nQueue Menu:\n");
+        printf("1. Enqueue\n");
+        printf("2. Dequeue\n");
+        printf("3. Display Queue\n");
+        printf("0. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch(choice) {
+            case 1:
+                printf("Enter value to enqueue: ");
+                scanf("%d", &value);
+                enqueue(value, &first, &last);
+                printf("%d added to queue.\n", value);
+                break;
+
+            case 2:
+                value = dequeue(&first, &last);
+                if(value == -1)
+                    printf("Queue is empty. Nothing to dequeue.\n");
+                else
+                    printf("Dequeued value: %d\n", value);
+                break;
+
+            case 3:
+                displayQueue(first);
+                break;
+
+            case 0:
+                printf("Exiting program.\n");
+                break;
+
+            default:
+                printf("Invalid choice. Try again.\n");
+        }
+    } while(choice != 0);
+
+    return 0;
 }
