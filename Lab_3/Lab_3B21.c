@@ -29,9 +29,9 @@ int main () {
 
     // for replace numbers input oldnumber and newnumber
     int oldNumber, newNumber;
-    printf("Enter the old number ");
+    printf("Enter the old number :");
     scanf("%d", &oldNumber);
-    printf("Enter the new number ");
+    printf("Enter the new number :");
     scanf("%d", &newNumber);
 
     printf("index :");

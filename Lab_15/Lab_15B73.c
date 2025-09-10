@@ -1,4 +1,4 @@
-// 73. WAP to delete alternate nodes of a doubly linked list.
+    // 73. WAP to delete alternate nodes of a doubly linked list.
 
 #include <stdio.h>
 #include <stdlib.h>

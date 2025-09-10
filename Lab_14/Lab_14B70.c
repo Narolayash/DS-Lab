@@ -33,9 +33,8 @@ void insertAtLastCircularList(int x, struct node **first, struct node **last) {
 }
 
 void splitACircularLinkedList(struct node *first, struct node **first1, struct node **first2) {
-    if(first == NULL || first->link == first ) {
-        return;
-    }
+    if(first == NULL || first->link == first ) return;
+    
 
     struct node *save1 = first, *save2 = first;
     while (save1->link != first && save1->link->link != first) {
@@ -47,11 +46,10 @@ void splitACircularLinkedList(struct node *first, struct node **first1, struct n
     *first2 = save2->link;    
     save2->link = *first1;
 
-    struct node *temp = *first2;
-    while(temp->link != first) {
-        temp = temp->link;
-    }
-    temp->link = *first2;
+    while (save1->link != NULL)
+        save1 = save1->link;
+    
+    save1->link = *first2;
 }
 
 void display(struct node *first) {

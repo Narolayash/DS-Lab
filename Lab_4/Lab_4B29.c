@@ -27,7 +27,7 @@ int main() {
         scanf("%d", &ary2[i]);
     }
 
-    //merged array
+    // merged array
     int i, j;
     for(i=0; i<in_1; i++) {
         merge[i] = ary1[i];
@@ -36,7 +36,7 @@ int main() {
         merge[i+j] = ary2[j];
     }
 
-    //print final array
+    // print final array
     for(int i=0; i<(in_1 + in_2); i++) {
         printf("%d ", merge[i]);
     }

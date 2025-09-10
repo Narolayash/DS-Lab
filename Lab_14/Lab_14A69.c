@@ -40,7 +40,7 @@ void insertAtFitstCircularList(int x, struct node **first, struct node **last) {
 }
 
 // Delete a node from specified position. 
-void deleteAtFirstCircularList(int posi, struct node **first, struct node **last) { 
+void deleteNodeCircularList(int posi, struct node **first, struct node **last) { 
     if(*first == NULL) {
         printf("List Is Empty \n");
         return ;
@@ -79,9 +79,9 @@ void deleteAtFirstCircularList(int posi, struct node **first, struct node **last
 
     struct node *temp = save->link;
     save->link = temp->link;
-    if(temp == *last) {
+    if(temp == *last) 
         *last = save;
-    }
+    
     free(temp);
 
     printf("Node Deleted \n");

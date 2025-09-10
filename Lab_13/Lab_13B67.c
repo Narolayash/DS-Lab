@@ -71,10 +71,8 @@ struct node *addGCD (struct node *first) {
     struct node *save = first, *next = NULL;
     while (save->link != NULL) {
         next = save->link;
-        struct node *newNode = (struct node*) malloc (sizeof(struct node));
-        if(!newNode) return NULL;
-        newNode->info = gcd(save->info, next->info);
-        newNode->link = save->link;
+        struct node *newNode = createNode(gcd(save->info, next->info));
+        newNode->link = next;
         save->link = newNode;
         save = next;
     }

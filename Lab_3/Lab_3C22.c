@@ -3,8 +3,9 @@
 
 int combination(int, int);
 int factorial(int);
+
 int main() {
-    //Number of Rows --->
+    // Number of Rows --->
     int row;
     printf("Enter the number of Rows :");
     scanf("%d", &row);

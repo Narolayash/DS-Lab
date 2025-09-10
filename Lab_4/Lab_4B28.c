@@ -27,7 +27,7 @@ int main() {
         }
     }
 
-    //print final array
+    // print final array
     for(int i=0; i<in; i++) {
         printf("%d ", ary[i]);
     }
