@@ -57,7 +57,7 @@ void display (struct node *top) {
         save = save->link;
     }
 
-    printf("NULL \n ");
+    printf("NULL \n");
 }
 
 int main() {
