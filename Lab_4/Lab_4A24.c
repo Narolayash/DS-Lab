@@ -36,6 +36,5 @@ int main() {
         printf("%d ", ary[i]);
     }
 
-
     return 0;
 }

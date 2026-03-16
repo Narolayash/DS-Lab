@@ -2,7 +2,7 @@
 // ascending order.
 #include<stdio.h>
 
-int intInsert(int );
+// int intInsert(int );
 int main() {
     int ary[50];
     // initialation of array

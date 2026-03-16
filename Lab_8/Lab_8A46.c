@@ -7,7 +7,7 @@
 #include <stdio.h>
 
 void enQueue(int queue[], int sizeOfQueue, int* first, int* rear, int val) {
-    if(*rear >= sizeOfQueue) {
+    if(*rear >= sizeOfQueue - 1) {
         printf("Queue overflow \n");
         return;
     }

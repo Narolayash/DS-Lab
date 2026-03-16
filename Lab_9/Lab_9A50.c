@@ -33,7 +33,7 @@ int main() {
 }
 
 // input array elements 
-void input_array( int * ptr, int sizeOfAry){
+void input_array( int *ptr, int sizeOfAry){
     for(int i=0; i<sizeOfAry; i++) {
         printf("Enter %dth element of array : ", (i+1));
         // scanf("%d", &iptr[i]);      //valid

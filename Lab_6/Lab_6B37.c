@@ -8,12 +8,12 @@
 // • if P and Q are balanced PQ is also balanced 
 // • "([])", "({})[()]" are balanced parenthesis strings  
 // • "([{]})", "())" are not balanced. 
- 
+
 // Input Format:  
 // The first line of the input contains a single integer T denoting the number of 
 // test cases. The description of T test cases follows. The first and only line of 
 // each test case contains a single string 
- 
+
 // Output Format:  
 // For each test case, print a single line containing the answer. 
 
@@ -24,7 +24,7 @@
 // ([)] 
 // ([{}()])[{}] 
 // [{{}] 
- 
+
 //  Output: 
 // 1 
 // 0 
@@ -58,7 +58,6 @@ int chefStr(char str[]) {
     while (str[i] != '\0') {
         if(str[i] == '(' || str[i] == '{' || str[i] == '[') 
             push(stack, size, &top, str[i++]);
-        
         else if(str[i] == ')' || str[i] == '}' || str[i] == ']') {
             if(top == -1) return 0;
             

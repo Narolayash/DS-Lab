@@ -67,9 +67,9 @@ void anagarm(char str1[20], char str2[20]) {
         }
     }
 
-    if (strcmp(str1, str2) == 0) {
-        printf("Strings are equal\n");
-    } else {
+    if (strcmp(str1, str2)) {
         printf("Strings are not equal\n");
+    } else {
+        printf("Strings are equal\n");
     }
 }

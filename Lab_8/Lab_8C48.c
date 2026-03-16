@@ -76,7 +76,6 @@ void display(int ary[], int front, int rear, int size) {
 
     if(front == rear) 
         printf("%d ", ary[front]);
-    
     else {
         while (front != rear) {
             printf("%d ", ary[front]);

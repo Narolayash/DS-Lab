@@ -4,15 +4,13 @@
 #include <stdlib.h>
 
 // define Node --- >
-struct node
-{
+struct node {
     int info;
     struct node *link;
 };
 
 // create a new node function
-struct node *createNode(int x)
-{
+struct node *createNode(int x) {
     struct node *newNode = (struct node *)malloc(sizeof(struct node));
     if (!newNode)
         return NULL;
@@ -22,30 +20,27 @@ struct node *createNode(int x)
 
     return newNode;
 }
-void compareTwoLinklist(struct node *first1, struct node *first2)
-{
-    if (first1 == NULL && first2 == NULL)
-    {
+
+void compareTwoLinklist(struct node *first1, struct node *first2) {
+    if (first1 == NULL && first2 == NULL) {
         printf("Both linklist is null, so they are same \n");
         return;
     }
-    if (first1 == NULL)
-    {
+
+    if (first1 == NULL) {
         printf("first linklist is null \n");
         return;
     }
-    if (first2 == NULL)
-    {
+
+    if (first2 == NULL) {
         printf("second linklist is null \n");
         return;
     }
 
     struct node *temp1 = first1, *temp2 = first2;
     int flag = 1;
-    while (temp1 != NULL && temp2 != NULL)
-    {
-        if (temp1->info != temp2->info)
-        {
+    while (temp1 != NULL && temp2 != NULL) {
+        if (temp1->info != temp2->info) {
             flag = 0;
             break;
         }
@@ -53,53 +48,41 @@ void compareTwoLinklist(struct node *first1, struct node *first2)
         temp2 = temp2->link;
     }
 
-    if (temp1 != NULL || temp2 != NULL)
-    {
+    if (temp1 != NULL || temp2 != NULL) 
         flag = 0;
-    }
 
     if (flag)
-    {
         printf("Linked List are the same \n");
-    }
     else
-    {
         printf("Linked list are not the same \n");
-    }
 }
 
-void displayAllNodes(struct node *first)
-{
-    if (first == NULL)
-    {
+void displayAllNodes(struct node *first) {
+    if (first == NULL) {
         printf("The Linked List is empty \n");
         return;
     }
 
     struct node *save;
     save = first;
-    while (save != NULL)
-    {
+    while (save != NULL) {
         printf("%d -> ", save->info);
         save = save->link;
     }
     printf("NULL \n");
 }
 
-void insertAtLast(int x, struct node **first)
-{
+void insertAtLast(int x, struct node **first) {
     struct node *newNode = createNode(x);
 
-    if (*first == NULL)
-    {
+    if (*first == NULL) {
         *first = newNode;
         return;
     }
 
     struct node *save;
     save = *first;
-    while (save->link != NULL)
-    {
+    while (save->link != NULL) {
         save = save->link;
     }
     save->link = newNode;

@@ -7,7 +7,7 @@
 
 // PUSH
 void push(int stack[], int size, int* top, int val) {
-    if(*top >= size) {
+    if(*top >= size - 1) {
         printf("stack overflow \n");
         return;
     }
@@ -17,7 +17,6 @@ void push(int stack[], int size, int* top, int val) {
 
 // POP
 int pop(int stack[], int* top) {
-    
     if(*top <= -1) {
         printf("stack underflow \n");
         return -1;
@@ -50,11 +49,12 @@ int peep(int stack[], int top, int posi) {
 
 // CHANGE
 void change(int stack[], int top, int posi, int changeVal) {
-    if((top-posi+1) < 0) 
+    if((top-posi+1) < 0) {
         printf("stack underflow \n");
-
-    else 
-        stack[top-posi+1] = changeVal;
+        return;
+    }
+    
+    stack[top-posi+1] = changeVal;
 }
 
 int main() {

@@ -5,9 +5,9 @@
 // • Display all nodes. (done)
 // • Delete a first node of the linked list. (done)
 // • Insert a node at the end of the linked list. (done)
-// • Delete a last node of the linked list. 
-// • Delete a node from specified position. 
-// • count the number of nodes
+// • Delete a last node of the linked list. (done)
+// • Delete a node from specified position. (done)
+// • count the number of nodes (done)
 
 #include <stdio.h>
 #include <stdlib.h>

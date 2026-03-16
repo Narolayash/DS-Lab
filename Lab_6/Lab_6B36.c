@@ -10,7 +10,7 @@ void push(char stack[], int size, int* top, char val) {
     }
     stack[++(*top)] = val;
 }
- 
+
 char pop(char stack[], int* top) {
     if(*top < 0) {
         printf("Stack underflow \n");
@@ -40,8 +40,10 @@ void aibi(char str[]) {
         }
     }
 
-    if(top < 0) printf("Valid string \n");
-    else printf("number of a != number of b");
+    if(top < 0) 
+        printf("Valid string \n");
+    else 
+        printf("number of a != number of b");
 }
 
 int main() {

@@ -16,7 +16,6 @@ void enQueueCircular(int queue[], int size, int* first, int* rear, int val) {
         (*first) = (*rear) = 0;
     else 
         (*rear) = ((*rear) + 1) % size;
-
     queue[(*rear)] = val;
 }
 
@@ -31,7 +30,6 @@ int deQueueCircular(int queue[], int size, int* first, int* rear) {
         (*first) = (*rear) = -1;
     else 
         (*first) = ((*first) + 1) % size;
-
     return val;
 }
 
