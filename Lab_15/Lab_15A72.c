@@ -5,7 +5,7 @@
 // • Insert a node at the end of the linked list. (Home Work) 
 // • Display all nodes. (Home Work) 
 
-#include <stdio.h>
+#include <stdio.h> 
 #include <stdlib.h>
 
 struct node {
@@ -56,16 +56,15 @@ void deleteNodeSpeciPosi(int posi, struct node **first) {
         save = save->rptr;
     }
 
-    if(posi > count) {
+    if(posi > count)
         printf("Out of the range \n");
-    }
 
     if(pre == NULL) {
         *first = save->rptr;
+    }
         (*first)->lptr = NULL;
         free(save);
         return;
-    }
 
     pre->rptr = next;
     next->lptr = pre;
@@ -89,7 +88,7 @@ void insertANodeAtLast(int x, struct node **first) {
     newNode->lptr = save;
     save->rptr = newNode;
 }
-
+    
 // Display all nodes. (Home Work) 
 void display(struct node *first) {
     if(first == NULL) {

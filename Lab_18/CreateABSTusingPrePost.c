@@ -13,6 +13,7 @@ struct node {
 // create a new node 
 struct node *createNode(int num) {
     struct node *newNode = (struct node*) malloc (sizeof(struct node));
+    if(!newNode) return NULL;
 
     newNode->num = num;
     newNode->left = NULL;

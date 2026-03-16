@@ -29,9 +29,8 @@ void insertANodeAtLast(int x, struct node **first) {
     }
 
     struct node *save = *first;
-    while(save->rptr != NULL) {
+    while(save->rptr != NULL) 
         save = save->rptr;
-    }
 
     newNode->lptr = save;
     save->rptr = newNode;
@@ -49,40 +48,77 @@ void display(struct node *first) {
         save = save->rptr;
     }
 
-    printf("NULL");
+    printf("NULL \n");
 }
 
 void deleteAlternateNode(struct node **first) {
     if(*first == NULL) return;
 
-    int x;
+    int choise;
     printf("Enter 1 for odd nodes \n");
     printf("Enter 2 for even nodes \n");
-    scanf("%d", &x);
+    scanf("%d", &choise);
 
-    struct node *save = *first, *pre = NULL, *next = NULL, *temp;
+    struct node *save = *first, *temp;
     int posi = 1;
 
     while (save != NULL ){
-        if((x == 1 && posi % 2 != 0) || (x == 2 && posi % 2 == 0)) {
+        if((choise == 1 && posi % 2 != 0) || (choise == 2 && posi % 2 == 0)) {
             temp = save;
             
-            if(save->lptr != NULL) {
+            if(save->lptr != NULL) 
                 save->lptr->rptr = save->rptr;
-            }
-            else {
+            
+            else 
                 *first = save->rptr;
-            }
-            if(save->rptr != NULL) {
+            
+            if(save->rptr != NULL) 
                 save->rptr->lptr = save->lptr;
-            }
+            
             save = save->rptr;
             free(temp);
         }
         else {
             save = save->rptr;
+            posi++;
         }
-        posi++;
     }
-        
+}
+
+int main() {
+    struct node *first = NULL;
+    int choice, val;
+
+    while (1) {
+        printf("\n--- MENU ---\n");
+        printf("1. Insert a node at end\n");
+        printf("2. Display list\n");
+        printf("3. Delete alternate nodes\n");
+        printf("4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter value: ");
+                scanf("%d", &val);
+                insertANodeAtLast(val, &first);
+                break;
+
+            case 2:
+                display(first);
+                break;
+
+            case 3:
+                deleteAlternateNode(&first);
+                break;
+
+            case 4:
+                printf("Exiting...\n");
+                return 0;
+
+            default:
+                printf("Invalid choice! Try again.\n");
+        }
+    }
 }
