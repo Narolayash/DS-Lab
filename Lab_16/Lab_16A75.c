@@ -46,9 +46,9 @@ struct node* insertNode(struct node* root, int value) {
 struct node *getSuccessor(struct node *root) {
     root = root->rptr;
 
-    while(root != NULL && root->lptr != NULL) 
+    while(root != NULL && root->lptr != NULL) {
         root = root->lptr;
-    
+    }
     return root;
 }
 struct node *deleteNode(struct node *root, int value) {
@@ -56,12 +56,9 @@ struct node *deleteNode(struct node *root, int value) {
 
     if(root->info > value) 
         root->lptr = deleteNode(root->lptr, value);
-    
     else if(root->info < value) 
         root->rptr = deleteNode(root->rptr, value);
-
     else {
-
         if(root->lptr == NULL) {
             struct node *temp = root->rptr;
             free(root);
@@ -89,7 +86,6 @@ struct node *search(struct node *root, int value) {
         
     if(value < root->info)
         return search(root->lptr, value);
-    
     return search(root->rptr, value);
 }
 
@@ -185,4 +181,3 @@ int main() {
         }
     }
 }
-

@@ -22,8 +22,7 @@ int enqueue(int x, struct node** first, struct node** last) {
     struct node* newNode = createNode(x);
 
     if(*first == NULL) {
-        *first = newNode;
-        *last = newNode;
+        *first = *last = newNode;
         return 1;
     }
     
@@ -41,13 +40,10 @@ int dequeue(struct node** first, struct node** last) {
     struct node* temp = *first;
     int info = temp->info;
 
-    if(*first == *last) {
-        *first = NULL;
-        *last = NULL;
-    }
-    else {
+    if(*first == *last) 
+        *first = *last = NULL;
+    else
         *first = temp->link;
-    }
     free(temp);
     return info;
 }
@@ -65,7 +61,7 @@ void displayQueue(struct node *first) {
         save = save->link;
     }
 
-    printf("NULL \n ");
+    printf("NULL \n");
 }
 
 int main() {

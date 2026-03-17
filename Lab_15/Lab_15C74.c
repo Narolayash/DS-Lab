@@ -91,13 +91,19 @@ void deletesong(struct node **first, char s[20]) {
         if(strcmp(strlwr(save->song), strlwr(s)) == 0) {
             if(save->lptr) {
                 save->lptr->rptr = save->rptr;
+                save->rptr->lptr = save->lptr;
             }
             else {
                 *first = save->rptr;
+                (*first)->lptr = NULL;
             }
 
             if(save->rptr) {
                 save->rptr->lptr = save->lptr;
+                save->lptr->rptr = save->rptr;
+            }
+            else {
+                save->lptr->rptr = NULL;
             }
 
             free(save);

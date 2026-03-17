@@ -37,7 +37,6 @@ void insertAtLast(int x, struct node **first) {
 }
 
 void copyLinkList(struct node *first, struct node **newFirst) {
-
     if(first == NULL) {
         printf("Linked list is empty.\n");
         return;

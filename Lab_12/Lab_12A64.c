@@ -61,7 +61,7 @@ struct node* reverseLinkedList(struct node *first) {
     while (save != NULL) {
         next = save->link;
         save->link = pre;
-        pre = save;
+        pre = save; 
         save = next;
     }
     first = pre;

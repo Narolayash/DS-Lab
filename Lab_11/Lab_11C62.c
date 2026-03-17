@@ -66,9 +66,8 @@ void removeDuplicate(struct node **first) {
                 next->link = temp->link;
                 free(temp);
             }
-            else {
+            else 
                 next = next->link;
-            }
         }
         save = save->link;
     }

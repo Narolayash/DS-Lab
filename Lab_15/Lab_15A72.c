@@ -61,10 +61,10 @@ void deleteNodeSpeciPosi(int posi, struct node **first) {
 
     if(pre == NULL) {
         *first = save->rptr;
-    }
         (*first)->lptr = NULL;
         free(save);
         return;
+    }
 
     pre->rptr = next;
     next->lptr = pre;

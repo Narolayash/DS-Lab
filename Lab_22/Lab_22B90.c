@@ -14,7 +14,7 @@ void selectionSort(int array[], int size){
             int temp = array[i];
             array[i] = array[minIndex];
             array[minIndex] = temp; 
-       }
+        }
     }
 }
 

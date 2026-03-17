@@ -1,4 +1,4 @@
-    // 73. WAP to delete alternate nodes of a doubly linked list.
+// 73. WAP to delete alternate nodes of a doubly linked list.
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -68,7 +68,6 @@ void deleteAlternateNode(struct node **first) {
             
             if(save->lptr != NULL) 
                 save->lptr->rptr = save->rptr;
-            
             else 
                 *first = save->rptr;
             
