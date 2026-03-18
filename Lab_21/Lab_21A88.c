@@ -1,6 +1,5 @@
 // 88. Write a program to implement a Binary Search using Array. (Iterative & 
 // recursive) 
-
 #include <stdio.h>
 
 int binarySearch(int array[], int size, int key) {

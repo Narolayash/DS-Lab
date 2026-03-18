@@ -18,7 +18,6 @@ void selectionSort(int array[], int size){
     }
 }
 
-
 int main() {
     int array[50], size;
 

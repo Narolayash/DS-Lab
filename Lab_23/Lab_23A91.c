@@ -12,4 +12,3 @@ void insertionSort(int array[], int size) {
         array[j+1] = key;
     }
 }
-
